@@ -2,8 +2,9 @@
 import { ImageKitProvider } from "imagekitio-next";
 import { SessionProvider } from "next-auth/react";
 import React from 'react';
-const urlEndpoint = process.env.URL_ENDPOINT;
-const publicKey = process.env.PUBLIC_KEY;
+import { NotificationProvider } from "./Notification";
+const urlEndpoint = 'https://ik.imagekit.io/ujjwal';
+const publicKey = 'public_YSs+NjTWtmh569B2o11r4ESXD3E=';
 
 
 export default function Providers({children}:{children:React.ReactNode}) {
@@ -27,11 +28,13 @@ export default function Providers({children}:{children:React.ReactNode}) {
   return (
    //session provider handles session of the user
    //it will allow image upload if the user is authenticated
-   <SessionProvider >
+   <SessionProvider refetchInterval={5 * 60}>
+    <NotificationProvider>
       <ImageKitProvider urlEndpoint={urlEndpoint} publicKey={publicKey} authenticator={authenticator}>
          {children}
         {/* ...client side upload component goes here */}
       </ImageKitProvider>
+      </NotificationProvider>
    </SessionProvider>
   );
 }

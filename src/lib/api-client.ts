@@ -27,7 +27,7 @@ class ApiClient{
    }
 
    async getVideos(){
-      return this.fetch<IVideo>('/videos')
+      return this.fetch<IVideo[]>('/videos')
    }
 
    async getAVideos(id:string){
