@@ -3,8 +3,8 @@ import { ImageKitProvider } from "imagekitio-next";
 import { SessionProvider } from "next-auth/react";
 import React from 'react';
 import { NotificationProvider } from "./Notification";
-const urlEndpoint = 'https://ik.imagekit.io/ujjwal';
-const publicKey = 'public_YSs+NjTWtmh569B2o11r4ESXD3E=';
+const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
+const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 
 
 export default function Providers({children}:{children:React.ReactNode}) {

@@ -6,12 +6,11 @@ import { IVideo } from "@/models/Video";
 import { apiClient } from "@/lib/api-client";
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import { FaFire, FaUpload, FaSearch } from "react-icons/fa";
+import { FaUpload } from "react-icons/fa";
 
 export default function Home() {
   const [videos, setVideos] = useState<IVideo[]>([]);
-  const [featuredVideos, setFeaturedVideos] = useState<IVideo[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
+
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -19,9 +18,6 @@ export default function Home() {
         const data = await apiClient.getVideos();
         const allVideos = Array.isArray(data) ? data : [data];
         setVideos(allVideos);
-        
-        // Set featured videos (e.g., first 3 videos)
-        setFeaturedVideos(allVideos.slice(0, 3));
       } catch (error) {
         console.error("Error fetching videos:", error);
       }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Home, Film, Upload, User, Menu, LogIn, LogOut, Moon, Sun } from "lucide-react";
+import { Home, Film, Upload, Menu, LogIn, LogOut, Moon, Sun } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useNotification } from "./Notification";
